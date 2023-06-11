@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Pacas | Reviews</title>
+    <title>Oliver Thomas | Reviews</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -21,13 +21,13 @@
     <% if user_signed_in? %>
     <% unless current_page?('/reviews') %>
 
-      <nav class="background-natural">
-        <ul>
-          <a href="/"><%= image_tag("jlogo.png", class: "jlogo") %></a>
-          <li><h4 class="ttu nm"><a href="/reviews">Published</span></a></h4>
-          <li class="do"><h4 class="ttu nm"><a href="/reviews/new">New Review</a></h4></li>
-          <li class="do"><h4 class="ttu nm"><%= link_to("Download CSV", reviews_path(format: :csv), class: "",) %></h4></li>
-          <li><h4 class="ttu nm"><%= link_to('Logout', destroy_user_session_path, method: :delete) %></h4></li>
+      <nav class="background-pink">
+        <ul class="nm">
+          <a href="/"><%= image_tag("ot-logo.png", class: "jlogo") %></a>
+          <li><h5 class="ttu nm"><a href="/reviews">Published</span></a></h5>
+          <li class="do"><h5 class="ttu nm"><a href="/reviews/new">New Review</a></h5></li>
+          <li class="do"><h5 class="ttu nm"><%= link_to("Download CSV", reviews_path(format: :csv), class: "",) %></h5></li>
+          <li><h5 class="ttu nm"><%= link_to('Logout', destroy_user_session_path, method: :delete) %></h5></li>
         </ul>
       </nav>
       <% end %>

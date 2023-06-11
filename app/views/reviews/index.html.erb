@@ -1,33 +1,24 @@
-<section class="double-accent-padding background-fleece tac">
-  <h1 class="nm ttu">Unbelievably Soft</h1>
-  <p class="tac">(but don't just take our word for it...)</p>
-  <div id="index-review-wrapper">  
-  <h3 class="tac star-wrapper-new text-yellow nm">★★★★★</h3>
-  <div class="flex-container-no jcc fw">
-      <h3 class="ttu nm"><%= @positive_review_count%> reviews</h3> 
-      <p class="" style="margin-left: 7px; margin-top: 12px;">(and counting)!</p>
-  </div>
-</div>
-   <a href="/reviews/new"><div class="new-btn background-charcoal ib accent-padding-so"><h4 class="ttu ib nm text-white">Write a Review</h4></div></a>
-</section>
 
-<section class=" main">
+    <%= image_tag("view-review-hero.png", class: "fw") %>
+
+<section class=" " id="new-review">
   <% @reviews.each_with_index do | review, index | %> 
-    <div class="accent-padding flex-container border-light-teal " style="">
-      <div class="one-third accent-padding">
-        <h3 class="ttu text-charchoal nm"><%= review.product.title %></h3>
-        <p class=" text-yellow" style="margin-top: 5px;">
+    <div class=" background-pink review-wrapper-new">
+      <div class="flex-container-no">
+        <div class="half">
+          <h5 class="nm author"><%= review.author_first %> <%= review.author_last.first(1) %>.</h5>
+          <p class=" text-red" style="margin-top: 5px;">
             <% review.rating.times do%>
               ★
             <% end %>
         </p>
-         <p class="subscript nmb"><%= review.author_first %> <%= review.author_last.first(1) %>.<span class="desktop-time"><%= review.created_at.strftime('%m/%d/%Y') %></span><br>        <%= image_tag("verified.png", class: "vam verified") %><span class="vam" style="font-size: 10pt;font-weight: lighter;">Verified Buyer</span>
-
-      </p>
+        </div>
+        <div class="half">
+          <p class="tar nm product-title"><%= review.product.title %></p>
+        </div>
       </div>
-      <div class="accent-padding two-thirds">
-        <p><%= review.text %></p>
-      </div>
+     
+        <p class="review-text"><%= review.text %></p>
     </div>
     
 
@@ -37,3 +28,18 @@
     <%= will_paginate @reviews %>
   </section>
 
+<style>
+  #new-review p.text-red { 
+  font-size: 18pt;
+  letter-spacing: 2.5px; 
+}
+#new-review h5.author { font-size: 47pt; }
+.review-text, .product-title {
+    font-family: 'neutra';
+    font-size: 16pt;
+}
+.review-wrapper-new {
+  padding: 30px;
+  margin: 30px;
+}
+</style>
