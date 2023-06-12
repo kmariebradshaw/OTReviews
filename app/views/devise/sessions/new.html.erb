@@ -6,10 +6,9 @@
 <% end %>
 
 
-<section class="main pacas-employee">
+<section class="main ot-employee">
   <div class="accent-padding">
-    <h2 class="tac nmb ttu">LogIn</h2>
-      <p class="tac nmt">Don't have an account? <a href="/users/sign_up" class="border-bottom-gray">Sign up here.</a></p>
+    <h2 class="tac nmb">Login</h2>
   </div>
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
@@ -32,6 +31,7 @@
     <%= f.submit "Login" %>
   </div>
 
+      <p class="tac nmt">Don't have an account? <a href="/users/sign_up" class="border-bottom-gray">Sign up here.</a></p>
 
 <% end %>
 </section>

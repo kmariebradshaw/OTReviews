@@ -2,15 +2,12 @@
 nav { display: none; }
 </style>
 
+  <section class="new-review-hero">
+    <%= image_tag("new-review-hero.png", class: "fw") %>
+  </section>
 <div id="new-review" class="main">
-  <h2 class="tac ttu">We'd love to hear from you</h2>
     <% if @review.errors.any? %>
-      <p class="tac subscript">We're sorry, but an error occurred. If this continues, please contact us a support@pacas.us</p>
-       <p class="error subscript tac" style="display: none;">
-          <% @review.errors.full_messages.each do |msg| %>
-            <%= msg %>
-          <% end %>
-       </p>
+      <p class="tac subscript error-message" style="margin-bottom: 20px;">We're sorry, but an error occurred.<br> If this continues, please contact us a <a href="mailto:customerservice@theoliverthomas.com" class="">customerservice@theoliverthomas.com</a></p>
     <% end %>
 
 
@@ -54,7 +51,7 @@ nav { display: none; }
 
 
     <div class="button">
-      <span><%= f.submit "Submit Your Review" %></span>
+      <span><%= f.submit "Submit It" %></span>
     </div> 
   <% end %>
 </div>
