@@ -7,12 +7,7 @@ nav { display: none; }
   </section>
 <div id="new-review" class="main">
     <% if @review.errors.any? %>
-      <p class="tac subscript">We're sorry, but an error occurred. If this continues, please contact us a customerservice@theoliverthomas.com</p>
-       <p class="error subscript tac" style="display: none;">
-          <% @review.errors.full_messages.each do |msg| %>
-            <%= msg %>
-          <% end %>
-       </p>
+      <p class="tac subscript error-message" style="margin-bottom: 20px;">We're sorry, but an error occurred.<br> If this continues, please contact us a <a href="mailto:customerservice@theoliverthomas.com" class="">customerservice@theoliverthomas.com</a></p>
     <% end %>
 
 

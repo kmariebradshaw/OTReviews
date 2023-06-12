@@ -5,7 +5,7 @@
     <p class="subscript decision-feedback tac"></p>
      <% @pending_reviews.each do | review | %>
 
-    <div class="flex-container-no accent-padding" id="pending-reviews">
+    <div class="flex-container-no  new-review" id="pending-reviews">
       <div id="decision-wrapper">
         <%= form_for(review, remote: true, :html => {:class => "ib"}) do |fa| %>
             <%= fa.hidden_field :status, :value => "approved" %>
@@ -16,22 +16,24 @@
             <%= fa.submit "𐄂", class: "decision denial ib" %>
           <% end %>
       </div>
-      <div class="three-fourths accent-padding">
-        <p class="nmb"><%= review.author_first %> 
-          <% if review.author_last %>
-            <span class="ttu" style="font-weight: normal"><%= review.author_last.first(1) %>.</span> 
-          <% end %>
-          <br class="mo"><span class="star-wrapper text-red">
-          <% review.rating.times do%>
-            ★
-          <% end %>
-          </span></p>
-        <p><%= review.text %></p>
+    <div class=" background-pink review-wrapper-new fw">
+      <div class="flex-container-no">
+        <div class="half">
+          <h5 class="nm author"><%= review.author_first %> <%= review.author_last.first(1) %>.</h5>
+          <p class=" text-red" style="margin-top: 5px;">
+            <% review.rating.times do%>
+              ★
+            <% end %>
+        </p>
+        </div>
+        <div class="half">
+          <p class="tar nm product-title"><%= review.product.title %></p>
+        </div>
       </div>
-      <div class="tar do accent-padding">
-        <h3 class="ttu nmb text-light-teal"><%= review.product.title %></h3>
-        <p class="subscript nmt"><%= review.created_at.strftime('%m/%d/%Y') %></p>
-      </div>
+     
+        <p class="review-text"><%= review.text %></p>
+    </div>
+    
     </div>
     <% end %>
   <% else %>
