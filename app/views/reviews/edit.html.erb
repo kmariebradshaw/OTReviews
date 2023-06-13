@@ -1,17 +1,6 @@
-<style>
-nav { display: none; }
-</style>
+<div id="edit-review" class="main new_review">
 
-  <section class="new-review-hero">
-    <%= image_tag("new-review-hero.png", class: "fw") %>
-  </section>
-<div id="new-review" class="main">
-    <% if @review.errors.any? %>
-      <p class="tac subscript error-message" style="margin-bottom: 20px;">We're sorry, but an error occurred.<br> If this continues, please contact us a <a href="mailto:customerservice@theoliverthomas.com" class="">customerservice@theoliverthomas.com</a></p>
-    <% end %>
-
-
-  <%= form_for @review do |f| %>
+<%= form_for @review do |f| %>
     <div id="rating-wrapper">
       <span class="vam subscript ib" style="margin-top: 2px;">Rating:</span>
       <span class="star-cb-group vam" >
@@ -53,7 +42,7 @@ nav { display: none; }
 
 
     <div class="button">
-      <span><%= f.submit "Submit It" %></span>
+      <span><%= f.submit "Update It" %></span>
     </div> 
   <% end %>
 </div>

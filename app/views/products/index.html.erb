@@ -1,11 +1,11 @@
 <section class="main">
-		<h2 class="tac ttu nm">Products</h2>
+		<h2 class="tac nm">Products</h2>
 		<p class="tac"><%= link_to 'Add Product', new_product_path, :class => 'btn' %></p>
 		
 
 <% @products.each do | product | %>
 <div class="all-products-view accent-padding tac">
-	<h3 class="ttu nmb"><%= product.title %></h3> 
+	<h5 class="ttu nmb"><%= product.title %> - <%=product.id%></h5> 
 	<p class="ib"><%= link_to 'Edit', edit_product_path(product), :class => "btn edit-btn" %> </p>
 	 <%= link_to 'Delete', product_path(product),
               method: :delete,

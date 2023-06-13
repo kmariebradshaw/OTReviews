@@ -10,7 +10,7 @@ Rails.application.routes.draw do
     resources :responses
   end
   resources :users
-  resources :reviews, only: [:new, :show, :index, :create, :update]
+  resources :reviews, only: [:new, :show, :index, :create, :update, :edit]
   resources :welcome, only: [:show, :new]
   resources :products, only: [:show]
 

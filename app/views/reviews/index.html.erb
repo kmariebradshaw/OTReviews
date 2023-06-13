@@ -6,15 +6,16 @@
     <div class=" background-pink review-wrapper-new">
       <div class="flex-container-no">
         <div class="half">
-          <h5 class="nm author"><%= review.author_first %> <%= review.author_last.first(1) %>.</h5>
-          <p class=" text-red" style="margin-top: 5px;">
+          <h5 class="nm author"><%= review.author_first %> <% if review.author_last %><%= review.author_last.first(1) %>. <% end %></h5>
+          <p class=" text-red" style="margin: 5px 0;">
             <% review.rating.times do%>
               ★
             <% end %>
         </p>
+        <h5 class="nm title"><%= review.title %></h5>
         </div>
         <div class="half">
-          <p class="tar nm product-title"><%= review.product.title %></p>
+          <p class="tar nm product-title"><% if review.product %><%= review.product.title %><% end %></p>
         </div>
       </div>
      
