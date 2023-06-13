@@ -6,8 +6,35 @@
 #   movies = Movie.create([{ title: 'Star Wars' }, { title: 'Lord of the Rings' }])
 #   Character.create(title: 'Luke', movie: movies.first)
 
-Product.create([{title: "Women's Crew Cut Pacas Socks", category: "W"},{title:
-"Women's Low Cut Pacas Socks", category: "W"}, {title: "Men's Crew Cut Pacas Socks",
-category: "M"}, {title: "Men's Low Cut Pacas Socks", category: "M"}, {title: "Pacas Super Soft Throw Blanket",
-category: "X"},{title:"Pacas Super Soft Scarf", category: "X"},  {title: "Kids' Low Cut Pacas Socks", category: "K"}, {title: "Kids' Crew Cut Pacas Socks", category: "K"}, {title: "Toddler Pacas Socks", category: "K"}])
+require 'csv'
 
+csv_product_seed = File.read(Rails.root.join('lib', 'seeds', 'product-seed.csv'))
+csv_products = CSV.parse(csv_product_seed, :headers => true, :encoding => 'ISO-8859-1')
+
+csv_products.each do | row | 
+	t = Product.new
+	t.title = row[0] 
+	t.save
+end 
+
+csv_review_text = File.read(Rails.root.join('lib', 'seeds', 'starter-reviews.csv'))
+csv_review = CSV.parse(csv_review_text, :headers => true, :encoding =>'ISO-8859-1')
+
+csv_review.each do | row | 
+	t = Review.new
+	t.text = row[0]
+	t.title = row[1]
+	t.rating = row[2]
+	t.author_first = row[4]
+	t.author_last = row[5]
+	t.author_email = row[6]
+	t.status = "approved"
+	t.product_id = row[3]
+	puts t.product_id
+	t.save
+	if t.save
+		puts "review saved"
+	else 
+		puts "not saved" 
+	end 
+end 

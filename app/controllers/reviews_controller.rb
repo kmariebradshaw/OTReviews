@@ -14,6 +14,10 @@ skip_before_action :verify_authenticity_token
       render 'new'
     end 
   end 
+    def edit
+          @review = Review.find(params[:id]) 
+
+  end  
   def show
     @review = Review.find(params[:id]) 
   end 
@@ -30,10 +34,15 @@ skip_before_action :verify_authenticity_token
   end 
   def update
     @review = Review.find(params[:id]) 
-    @review.update(review_params)
-  end 
+    if @review.update(review_params)
+      redirect_to '/welcome/new'
+     else
+      render 'edit'
+    end
+  end
+
   private 
   def review_params
-      params.require(:review).permit(:favorite, :text, :rating, :status, :product_id, :author_first, :author_last, :author_email, :staff_favorite, :vote, :created_at, :sticky)
+      params.require(:review).permit(:favorite, :title, :text, :rating, :status, :product_id, :author_first, :author_last, :author_email, :staff_favorite, :vote, :created_at, :sticky)
   end 
 end

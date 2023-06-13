@@ -27,7 +27,7 @@
         </p>
         </div>
         <div class="half">
-          <p class="tar nm product-title"><%= review.product.title %></p>
+          <p class="tar nm product-title"><% if review.product %><%= review.product.title %><% end %></p>
         </div>
       </div>
      
