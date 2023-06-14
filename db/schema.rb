@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_06_14_185603) do
+ActiveRecord::Schema[7.0].define(version: 2023_06_14_200403) do
   create_table "answers", force: :cascade do |t|
     t.string "text"
     t.text "response"
@@ -58,6 +58,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_14_185603) do
     t.boolean "sticky", default: false
     t.boolean "favorite", default: false
     t.string "title"
+    t.boolean "verification", default: false
   end
 
   create_table "users", force: :cascade do |t|

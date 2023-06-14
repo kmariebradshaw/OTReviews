@@ -6,7 +6,7 @@
     <div class=" background-pink review-wrapper-new">
       <div class="flex-container-no">
         <div class="half">
-          <h5 class="nm author"><%= review.author_first %> <% if review.author_last %><%= review.author_last.first(1) %>. <% end %></h5>
+          <h5 class="nm author"><%= review.author_first %> <% if review.author_last %><%= review.author_last.first(1) %>.<% end %><% if review.verification == 1 || review.verification == true%><span class="verified-image">✓</span> <span class="verified-buyer">Verified Buyer</span><% end %></h5>
           <p class=" text-red" style="margin: 5px 0;">
             <% review.rating.times do%>
               ★

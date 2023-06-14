@@ -13,31 +13,26 @@
     </div>
     <%= f.collection_select :product_id, Product.all, :id, :title, {prompt: "Select Product"} %>
     <p class="nmt">
-            <%= f.text_field :title ,placeholder: "Review Title" %>
+      <%= f.text_field :title ,placeholder: "Review Title" %>
 
       <%= f.text_area :text, placeholder: "Write your review here" %>
     </p>
-    <% if params[:email] %> 
-      <%= f.hidden_field :author_email, :value => params[:email] %>
-    <% else %>
+    
       <%= f.text_field :author_email, placeholder: "Email" %>
-    <% end %>
     <div class="flex-container-no">
       <div class="half-no" style="margin-right: 10px;">
-    <% if params[:first] %> 
-      <%= f.hidden_field :author_first, :value=> params[:first] %>
-    <% else %>
+
       <%= f.text_field :author_first, placeholder: "First Name" %>
-    <% end %>
-  </div>
+    </div>
   <div class="half-no">
-    <% if params[:sur] %> 
-      <%= f.hidden_field :author_last, :value => params[:sur] %>
-    <% else %>
+    
       <%= f.text_field :author_last,placeholder: "Last Name" %>
-    <% end %>
   </div>
-</div>
+  </div>
+  <%= f.label :verification do %>
+    <%= f.check_box :verification %> 
+    Verified Customer?
+  <% end %>
   <br>
 
 
@@ -46,3 +41,7 @@
     </div> 
   <% end %>
 </div>
+
+<style>
+  label { font-size: 22pt; color: #2f3348; }
+</style>
