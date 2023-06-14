@@ -1,29 +1,18 @@
-<section class="main">
-		<h2 class="tac nm">Products</h2>
-		<p class="tac"><%= link_to 'Add Product', new_product_path, :class => 'btn' %></p>
-		
 
-<% @products.each do | product | %>
-<div class="all-products-view accent-padding tac">
-	<h5 class="ttu nmb"><%= product.title %> - <%=product.id%></h5> 
-	<p class="ib"><%= link_to 'Edit', edit_product_path(product), :class => "btn edit-btn" %> </p>
-	 <%= link_to 'Delete', product_path(product),
-              method: :delete,
-              data: { confirm: 'This will delete all associated reviews, are you sure?' }, :class => "btn delete-btn" %>
-              <% if product.status == "approved" %> 
-	  			<%= form_for(product, remote: true, :html => {:class => 'archive-form'}) do |fa| %>
-			          <%= fa.hidden_field :status, :value => "archived" %>
-			      	  <%= fa.submit "Archive", class: "product-status btn archive-btn" %>
-			      	<% end %>
 
-    		 <% else %>
-	  			<%= form_for(product, remote: true, :html => {:class => 'archive-form'}) do |fa| %>
-			          <%= fa.hidden_field :status, :value => "approved" %>
-			      	  <%= fa.submit "Approve", class: "product-status btn archive-btn" %>
-			      	<% end %>    		 
-			      	<% end %>
-		<p class="ib"><%= link_to 'Reviews (' + product.reviews.count.to_s + ')', product_path(product), :class => "btn" %> 
+<div class="add-category-product main">
+<div class="button">
+	<span><a href="/products/new">Add Product</a></span>
 </div>
-<% end %> 
+<div class="spacer"></div>
 
-</section>
+<h5 class="tac nm subscript">Current Products</h5>
+    
+      <% @products.each do | product | %>
+      <p class="category-list"><%= product.title %> - <%= link_to "Edit", edit_product_path(product) %> - <%= link_to 'Delete', product_path(product),
+              method: :delete,
+              data: { confirm: 'This will delete all associated reviews, are you sure?' }, :class => "" %> - <%= link_to 'Reviews (' + product.reviews.count.to_s + ')', product_path(product), :class => "" %> 
+             
+      </p>
+      <% end %>
+  </div>
