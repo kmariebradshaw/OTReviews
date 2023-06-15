@@ -8,10 +8,14 @@ nav { display: none; }
 
   </section>
 <div id="new-review" class="main">
-    <% if @review.errors.any? %>
+     <% if @review.errors.any? %>
       <p class="tac subscript error-message" style="margin-bottom: 20px;">We're sorry, but an error occurred.<br> If this continues, please contact us a <a href="mailto:customerservice@theoliverthomas.com" class="">customerservice@theoliverthomas.com</a></p>
+            <ul class="tac">
+        <% @review.errors.full_messages.each do |msg| %>
+          <li class="subscript text-red"><%= msg %></li>
+        <% end %>
+      </ul>
     <% end %>
-
 
   <%= form_for @review do |f| %>
     <div id="rating-wrapper">
@@ -31,10 +35,16 @@ nav { display: none; }
       <% end %>
     </select>
     <% @categories.each do | category | %>
-    <div class="product-categories" id="<%=category.id %>" style="display: none;" >
-    <%= f.collection_select :product_id, category.products, :id, :title, {prompt: "Select Product"} %>
-  </div>
+    <select class="product-categories" id="<%=category.id %>" style="display: none;" >
+        <option value="" disabled selected>Select Product</option>
+
+  <% category.products.each do | product | %>
+      <option data-product-id="<%=product.id%>"><%= product.title %></option>
+      <% end %>
+</select> 
     <% end %>
+          <%= f.hidden_field :product_id, :value => 1 %>
+
     <p class="nmt">
             <%= f.text_field :title ,placeholder: "Review Title" %>
 
@@ -76,4 +86,9 @@ nav { display: none; }
     $(selectedCategory).show().siblings('.product-categories').hide();
 
   })
+  $('.product-categories').change(function() {
+    var selectedProductId = $(this).find('option:selected').data("product-id")
+    $('#review_product_id').val(selectedProductId)
+  })
+
 </script>
