@@ -3,7 +3,9 @@ nav { display: none; }
 </style>
 
   <section class="new-review-hero">
-    <%= image_tag("new-review-hero.png", class: "fw") %>
+    <%= image_tag("new-review-hero.jpg", class: "fw do") %>
+        <%= image_tag("new-review-hero-mobile.jpg", class: "fw mo") %>
+
   </section>
 <div id="new-review" class="main">
     <% if @review.errors.any? %>
@@ -22,9 +24,16 @@ nav { display: none; }
         <%= f.radio_button :rating, 1, id: "rating-1" %><label for="rating-1">1</label>
       </span>
     </div>
+    <select id="category-selection">
+    <option value="" disabled selected>Select Category</option>
     <% @categories.each do | category | %>
-    <div class=""
+      <option data-category-id="<%=category.id%>"><%= category.name %></option>
+      <% end %>
+    </select>
+    <% @categories.each do | category | %>
+    <div class="product-categories" id="<%=category.id %>" style="display: none;" >
     <%= f.collection_select :product_id, category.products, :id, :title, {prompt: "Select Product"} %>
+  </div>
     <% end %>
     <p class="nmt">
             <%= f.text_field :title ,placeholder: "Review Title" %>
@@ -60,3 +69,11 @@ nav { display: none; }
     </div> 
   <% end %>
 </div>
+
+<script>
+  $('#category-selection').change(function() {
+    var selectedCategory = '#' + $(this).find('option:selected').data("category-id")
+    $(selectedCategory).show().siblings('.product-categories').hide();
+
+  })
+</script>

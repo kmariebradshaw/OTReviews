@@ -8,6 +8,7 @@ skip_before_action :verify_authenticity_token
 	end 
   def create
     @review = Review.new(review_params)
+    @categories = Category.all
 
     if @review.save
       redirect_to @review
