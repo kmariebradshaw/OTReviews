@@ -18,6 +18,13 @@
   font-weight: 400; 
   font-style: normal;
 }
+@font-face {
+  font-family: 'neutra';
+  src: font-url('Neutra2Display-Titling.otf'); 
+  font-weight: 700; 
+  font-style: bold;
+}
+Neutra2Display-Titling.otf
 
 .fdc { flex-direction: column;}
 .third { width: 33%;}
@@ -45,6 +52,7 @@
     right: 11%;
     margin-top: 2%;
 }
+.title { font-family: neutra; font-weight: bold; font-size: 14pt; margin-top: 15px !important;}
 
 
 

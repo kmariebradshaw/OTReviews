@@ -4,6 +4,7 @@ skip_before_action :verify_authenticity_token
 	
   def new 
     @review = Review.new()
+    @categories = Category.all
 	end 
   def create
     @review = Review.new(review_params)

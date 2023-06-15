@@ -22,7 +22,10 @@ nav { display: none; }
         <%= f.radio_button :rating, 1, id: "rating-1" %><label for="rating-1">1</label>
       </span>
     </div>
-    <%= f.collection_select :product_id, Product.all, :id, :title, {prompt: "Select Product"} %>
+    <% @categories.each do | category | %>
+    <div class=""
+    <%= f.collection_select :product_id, category.products, :id, :title, {prompt: "Select Product"} %>
+    <% end %>
     <p class="nmt">
             <%= f.text_field :title ,placeholder: "Review Title" %>
 
