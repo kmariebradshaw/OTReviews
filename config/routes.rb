@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     resources :reviews
     resources :answers
     resources :responses
+    resources :categories
   end
   resources :users
   resources :reviews, only: [:new, :show, :index, :create, :update, :edit]

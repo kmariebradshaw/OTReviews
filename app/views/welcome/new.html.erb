@@ -4,10 +4,11 @@
 
   <% @latest_reviews.each_with_index do | review, index | %> 
   <% if !review.sticky %>
-    <div class=" background-pink review-wrapper-new">
-      <div class="flex-container-no">
-        <div class="half">
-          <h5 class="nm author"><%= review.author_first %> <% if review.author_last %><%= review.author_last.first(1) %>. <% end %></h5>
+       <div class=" background-pink review-wrapper-new new-review" style="box-sizing: border-box;">
+      <div class="flex-container">
+        <div class="fw">
+          <h5 class="nm author"><%= review.author_first %> <% if review.author_last %><%= review.author_last.first(1) %>.<% end %><% if review.verification == 1 || review.verification == true%><br class="mo"><span class="verified-image">✓</span> <span class="verified-buyer">Verified Buyer</span><% end %></h5>
+          <p class="tar nm product-title mo"><% if review.product %><%= review.product.title %><% end %></p>
           <p class=" text-red" style="margin: 5px 0;">
             <% review.rating.times do%>
               ★
@@ -16,7 +17,7 @@
         <h5 class="nm title"><%= review.title %></h5>
         </div>
         <div class="half">
-          <p class="tar nm product-title"><% if review.product %><%= review.product.title %><% end %></p>
+          <p class="tar nm product-title do"><% if review.product %><%= review.product.title %><% end %></p>
         </div>
       </div>
      
@@ -46,37 +47,6 @@
     </div>
       
   <% end %>
-
-   <div class="review-wrapper accent-padding border-light-teal mo ">
-      <div class="accent-padding">
-        <h3 class="ttu text-light-teal nm asfs"><%= review.product.title %></h3>
-        <p class="">
-          <span class="star-wrapper text-red">
-            <% review.rating.times do%>
-              ★
-            <% end %>
-          </span>
-         <span style="font-weight: bold; font-size: 10pt;"> <%= review.created_at.strftime('%m/%d/%Y') %></span>
-        </p>
-          <div class="accent-padding-tbo">
-     
-        <p class=""><%= review.text %></p>
-      </div>
-
-        <div class="">
-          <p class="nmb"><%= review.author_first %> 
-            <% if review.author_last %>
-              <span class="ttu" style="font-weight: normal;">
-                <%= review.author_last.first(1) %>.
-              </span> 
-            <% end %>
-          </p>
-        </div>
-        <div>
-        <%= image_tag("verified.png", class: "vam verified") %><span class="vam" style="font-size: 10pt;"><b>Verified Buyer</b></span>
-      </div>
-      </div>
-      </div> 
 
 
   <% end %>

@@ -4,9 +4,11 @@ skip_before_action :verify_authenticity_token
 	
   def new 
     @review = Review.new()
+    @categories = Category.all
 	end 
   def create
     @review = Review.new(review_params)
+    @categories = Category.all
 
     if @review.save
       redirect_to @review
@@ -43,6 +45,6 @@ skip_before_action :verify_authenticity_token
 
   private 
   def review_params
-      params.require(:review).permit(:favorite, :title, :text, :rating, :status, :product_id, :author_first, :author_last, :author_email, :staff_favorite, :vote, :created_at, :sticky)
+      params.require(:review).permit(:verification, :favorite, :title, :text, :rating, :status, :product_id, :author_first, :author_last, :author_email, :staff_favorite, :vote, :created_at, :sticky)
   end 
 end

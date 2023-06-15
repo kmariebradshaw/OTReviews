@@ -17,17 +17,19 @@
           <% end %>
       </div>
     <div class=" background-pink review-wrapper-new fw">
-      <div class="flex-container-no">
-        <div class="half">
-          <h5 class="nm author"><%= review.author_first %> <%= review.author_last.first(1) %>.</h5>
-          <p class=" text-red" style="margin-top: 5px;">
+      <div class="flex-container">
+        <div class="fw">
+          <h5 class="nm author"><%= review.author_first %> <% if review.author_last %><%= review.author_last.first(1) %>.<% end %><% if review.verification == 1 || review.verification == true%><br class="mo"><span class="verified-image">✓</span> <span class="verified-buyer">Verified Buyer</span><% end %></h5>
+          <p class="tar nm product-title mo"><% if review.product %><%= review.product.title %><% end %></p>
+          <p class=" text-red" style="margin: 5px 0;">
             <% review.rating.times do%>
               ★
             <% end %>
         </p>
+        <h5 class="nm title"><%= review.title %></h5>
         </div>
         <div class="half">
-          <p class="tar nm product-title"><% if review.product %><%= review.product.title %><% end %></p>
+          <p class="tar nm product-title do"><% if review.product %><%= review.product.title %><% end %></p>
         </div>
       </div>
      

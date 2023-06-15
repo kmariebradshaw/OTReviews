@@ -1,0 +1,18 @@
+<div id="new-category" class="add-category-product main">
+  <h5 class="tac nm subscript">Edit a Category</h5>
+  <p class="important-note tac nm">*Note this will not edit the products tied to this category, just the name of the category</p>
+  <%= form_for @category do |f| %>
+    
+      <%= f.text_field :name, placeholder: "Category Name" %>
+   <div class="button">
+      <span><%= f.submit %></span>
+    </div>
+  <% end %>
+
+<div class="spacer"></div>
+  <h5 class="tac nm subscript">Current Categories</h5>
+    
+      <% @categories.each do | category | %>
+  <p class="category-list"><%= category.name %> - <%= link_to "Edit", edit_category_path(category) %></p>      <% end %>
+</div>
+

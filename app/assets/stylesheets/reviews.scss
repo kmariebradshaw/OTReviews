@@ -18,6 +18,13 @@
   font-weight: 400; 
   font-style: normal;
 }
+@font-face {
+  font-family: 'neutra';
+  src: font-url('Neutra2Display-Titling.otf'); 
+  font-weight: 700; 
+  font-style: bold;
+}
+Neutra2Display-Titling.otf
 
 .fdc { flex-direction: column;}
 .third { width: 33%;}
@@ -45,6 +52,7 @@
     right: 11%;
     margin-top: 2%;
 }
+.title { font-family: neutra; font-weight: bold; font-size: 14pt; margin-top: 15px !important;}
 
 
 
@@ -241,6 +249,7 @@ h5 { font-size: 22pt; }
 /*new review*/
 .new_review {
     width: 100%;
+    box-sizing: border-box;
     margin: 0 auto;
     max-width: 600px;
     textarea{
@@ -762,3 +771,23 @@ ul {
   letter-spacing: 2.5px; 
 }
 #all-reviews h5.author { font-size: 47pt; }
+
+  #new-review p.text-red { 
+  font-size: 18pt;
+  letter-spacing: 2.5px; 
+}
+#new-review h5.author { font-size: 47pt; }
+.review-text, .product-title {
+    font-family: 'neutra';
+    font-size: 16pt;
+}
+.review-wrapper-new {
+  padding: 30px;
+  margin: 30px;
+}
+@media only screen and (max-width: 588px) {
+  .new-review .flex-container, .product-title { text-align: center; }
+  .product-title { margin-top: 20px; }
+  .author { line-height: 40px; }
+  .verified-image { margin-left: 0 !important; }
+}
