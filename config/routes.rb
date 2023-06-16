@@ -11,9 +11,8 @@ Rails.application.routes.draw do
     resources :categories
   end
   resources :users
-  resources :reviews, only: [:new, :show, :index, :create, :update, :edit]
-  resources :welcome, only: [:show, :new]
-  resources :products, only: [:show]
+  resources :reviews, only: [:new, :show, :index, :create]
+  resources :welcome, only: [:show]
 
   root to: redirect('/users/sign_in')
 end
