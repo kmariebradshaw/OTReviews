@@ -9,7 +9,7 @@
               ★
             <% end %>
         </p>
-        <p class="subscript nmb"><%= review.author_first %> <%= review.author_last.first(1) %>.<span class="desktop-time"><%= review.created_at.strftime('%m/%d/%Y') %></span><br>        <%= image_tag("verified.png", class: "vam verified") %><span class="vam" style="font-size: 10pt;font-weight: lighter;">Verified Buyer</span>
+        <p class="subscript nmb"><%= review.author_first %> <% if review.author_last %><%= review.author_last.first(1) %><% end%>.<span class="desktop-time"><%= review.created_at.strftime('%m/%d/%Y') %></span><br>        <%= image_tag("verified.png", class: "vam verified") %><span class="vam" style="font-size: 10pt;font-weight: lighter;">Verified Buyer</span>
 
       </p>
       </div>
