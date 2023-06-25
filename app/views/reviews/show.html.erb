@@ -4,9 +4,21 @@
 </style>
 
 <div id="show-review">
-    <a href="https://theoliverthomas.com/">
         <%= image_tag("thank-you.jpg", class: "fw do") %>
                 <%= image_tag("thank-you-mobile.jpg", class: "fw mo") %>
 
-    </a>
 </div>
+
+<script>
+    $('#show-review').click(function() {
+        if (window.location != window.parent.location) {
+    window.parent.location = "https://theoliverthomas.com/";
+    }
+    else {
+        window.location = "https://theoliverthomas.com/"
+    }
+})
+    </script>
+    <style>
+        #show-review { cursor: pointer; }
+    </style>
