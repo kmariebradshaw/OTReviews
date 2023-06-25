@@ -27,7 +27,9 @@
           <li><h5 class="ttu nm"><a href="/reviews">Published</span></a></h5>
                     <li><h5 class="ttu nm"><a href="/welcome/new">Edit</span></a></h5>
 
-          <li class="do"><h5 class="ttu nm"><a href="/reviews/new">New Review</a></h5></li>
+          <li class="do"><h5 class="ttu nm"><a href="/products/">Products</a></h5></li>
+                    <li class="do"><h5 class="ttu nm"><a href="/categories/">Categories</a></h5></li>
+
           <li class="do"><h5 class="ttu nm"><%= link_to("Download CSV", reviews_path(format: :csv), class: "",) %></h5></li>
           <li><h5 class="ttu nm"><%= link_to('Logout', destroy_user_session_path, method: :delete) %></h5></li>
         </ul>
