@@ -23,11 +23,12 @@
   <% end %>
   </section>
 <% else %>
-<h5 class="tac">No Reviews Yet</h5>
-   <div class="button">
-    Leave a Review
-  </div>
-
+  <section class="new-review-hero">
+    <a href="/reviews/new">
+    <%= image_tag("new-review-hero.jpg", class: "fw do") %>
+    <%= image_tag("new-review-hero-mobile.jpg", class: "fw mo") %>
+</a>
+  </section>
 <% end %>
   <script>
 
