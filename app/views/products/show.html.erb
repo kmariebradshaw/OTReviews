@@ -1,71 +1,44 @@
-<div class="double-accent-padding">
-	<div class="tac" style="margin-bottom: 20px;">
-  	<h3 class="nm ttu"><%= @product.title %> Reviews</h3>
-    <% if @positive_review_count > 0 %>
-    <div class="flex-container-no fw jcc" id="new-review-wrapper">
-      <h3 class="tac star-wrapper-pdp text-yellow nm">★★★★★</h3>
-      <p class="subscript" style="margin-left: 5px;"><%= @positive_review_count%> 
-        <% if @positive_review_count == 1 %>
-          Review
-          <% else %>
-          Reviews
-          <% end %>
-        </p> 
-    </div>
-    <% else %>
-    <p class="subscript">No Reviews Yet.</p>
-   <a href="/reviews/new" target="_blank"><div class="new-btn background-charcoal ib accent-padding-so"><h4 class="ttu ib nm text-white">Write a Review</h4></div></a>
-<% end %>
-  </div>
-      <% if @positive_review_count > 0 %>
-
-  <section class=" main-so">
+<% if @positive_review_count > 0 %>
+<section class="new-review slick-wrapper">
   <% @reviews.each do | review | %> 
-    <div class="accent-padding border-light-teal " style="padding: 20px;">
-      <div class="flex-container-no fw">
-        <div class="half">
-          <p class="subscript nm"><span><%= review.author_first %> <%= review.author_last.first(1) %>.</span></p>
-             <p class="subscript nm"><%= image_tag("verified.png", class: "vam verified") %><span class="vam" style="font-size: 10pt;font-weight: lighter;">Verified Buyer</span>
-
-      </p>
-        </div>
-        <div class="half tar asfs">
-          <p class="subscript nm"><%= review.created_at.strftime('%m/%d/%Y') %></p>
-        </div>
-      </div>
-      <p class=" text-yellow">
+    <div class=" background-pink review-wrapper-new">
+      <div class="flex-container">
+        <div class="fw">
+          <h5 class="nm author"><%= review.author_first %> <% if review.author_last %><%= review.author_last.first(1) %>.<% end %><% if review.verification == 1 || review.verification == true%><br class="mo"><span class="verified-image">✓</span> <span class="verified-buyer">Verified Buyer</span><% end %></h5>
+          <p class="tar nm product-title mo"><% if review.product %><%= review.product.title %><% end %></p>
+          <p class=" text-red" style="margin: 5px 0;">
             <% review.rating.times do%>
               ★
             <% end %>
-      </p>
-      <p class="nmb"><%= review.text %></p>
-    </div>
+        </p>
+        <h5 class="nm title"><%= review.title %></h5>
+        </div>
+        <div class="half">
+          <p class="tar nm product-title do"><% if review.product %><%= review.product.title %><% end %></p>
+        </div>
+      </div>
      
-    
-
-
+        <p class="review-text"><%= review.text %></p>
+    </div>
   <% end %>
-        <%= will_paginate @reviews %>
-
   </section>
-  <% end%>
-</div>
+<% else %>
+<h5 class="tac">No Reviews Yet</h5>
+   <div class="button">
+    Leave a Review
+  </div>
 
+<% end %>
+  <script>
 
-<style>
- nav { display: none; }
- .current { font-style: normal; font-weight: bold; }
- @media only screen and (min-width: 800px) {
- .pagination a, .pagination em, .pagination span { font-family: 'Lexend'; margin: 0 10px; }
-}
- @media only screen and (max-width: 799px) {
- .pagination a, .pagination em, .pagination span { font-family: 'Lexend'; margin: 0 2.5px; }
-}
- .pagination span { font-weight: normal; }
- .pagination .disabled { opacity: 0.2 }
-</style>
-<script>
-  $('.previous_page').text("<")
-    $('.next_page').text(">")
-
+  $('.slick-wrapper').slick({
+  infinite: true,
+  speed: 300,
+  slidesToShow: 1,
+  adaptiveHeight: true
+});
+    
 </script>
+<style>
+  nav { display: none !important; }
+</style>
