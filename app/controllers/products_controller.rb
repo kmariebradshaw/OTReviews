@@ -14,7 +14,7 @@ class ProductsController < ApplicationController
   end 
   def show
     @product = Product.find(params[:id]) 
-    @positive_review_count = @product.reviews.where("rating > ?", 3).count()
+    @positive_review_count = @product.reviews.where("rating > ?", "3").count()
     if @positive_review_count > 50 
       @reviews = @product.reviews.where(:status => "approved").order("created_at DESC").paginate(page: params[:page], per_page: 5, total_entries: 50)
     else 
@@ -24,6 +24,11 @@ class ProductsController < ApplicationController
   end 
   def index
     @products = Product.all 
+    @productsdownload = Product.all.order("created_at DESC")
+ respond_to do |format|
+    format.html
+    format.csv { send_data @productsdownload.to_csv, filename: "Products-#{Date.today}.csv" }
+    end
   end 
   def edit
     @product = Product.find(params[:id])

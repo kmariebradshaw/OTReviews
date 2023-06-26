@@ -1,30 +1,31 @@
-<section class="main slick-wrapper">
+<section class="new-review slick-wrapper">
   <% @reviews.each do | review | %> 
-      <div class="">
- <div class="accent-padding flex-container border-charcoal" style="">
-      <div class="one-third accent-padding">
-        <h3 class="ttu text-charchoal nm"><%= review.product.title %></h3>
-        <p class=" text-yellow" style="margin-top: 5px;">
+    <div class=" background-pink review-wrapper-new">
+      <div class="flex-container">
+        <div class="fw">
+          <h5 class="nm author"><%= review.author_first %> <% if review.author_last %><%= review.author_last.first(1) %>.<% end %><% if review.verification == 1 || review.verification == true%><br class="mo"><span class="verified-image">✓</span> <span class="verified-buyer">Verified Buyer</span><% end %></h5>
+          <p class="tar nm product-title mo"><% if review.product %><%= review.product.title %><% end %></p>
+          <p class=" text-red" style="margin: 5px 0;">
             <% review.rating.times do%>
               ★
             <% end %>
         </p>
-        <p class="subscript nmb"><%= review.author_first %> <% if review.author_last %><%= review.author_last.first(1) %><% end%>.<span class="desktop-time"><%= review.created_at.strftime('%m/%d/%Y') %></span><br>        <%= image_tag("verified.png", class: "vam verified") %><span class="vam" style="font-size: 10pt;font-weight: lighter;">Verified Buyer</span>
-
-      </p>
+        <h5 class="nm title"><%= review.title %></h5>
+        </div>
+        <div class="half">
+          <p class="tar nm product-title do"><% if review.product %><%= review.product.title %><% end %></p>
+        </div>
       </div>
-      <div class="accent-padding two-thirds">
-        <p><%= review.text %></p>
-      </div>
+     
+        <p class="review-text"><%= review.text %></p>
     </div>
     
 
 
-
-
- </div>
   <% end %>
+    
   </section>
+
 <style>
   .border-charcoal { border: 1px solid gray; border-radius: 20px; box-sizing: border-box; background-color: white;}
   @media only screen and (max-width: 799px) {
