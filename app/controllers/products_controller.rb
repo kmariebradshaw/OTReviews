@@ -24,6 +24,11 @@ class ProductsController < ApplicationController
   end 
   def index
     @products = Product.all 
+    @productsdownload = Product.all.order("created_at DESC")
+ respond_to do |format|
+    format.html
+    format.csv { send_data @productsdownload.to_csv, filename: "Products-#{Date.today}.csv" }
+    end
   end 
   def edit
     @product = Product.find(params[:id])
