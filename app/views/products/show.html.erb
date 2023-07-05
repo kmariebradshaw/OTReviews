@@ -1,6 +1,6 @@
 <% if @positive_review_count > 0 %>
 <h1 class="text-red tac nm">The Reviews Are In</h1>
-<a href="reviews/new"><p class="subscript tac" style="text-decoration: underline;">Write a Review</p></a>
+<a href="/reviews/new"><p class="subscript tac" style="text-decoration: underline;">Write a Review</p></a>
 <section class="new-review slick-wrapper">
   <% @reviews.each do | review | %> 
     <div class=" background-pink review-wrapper-new">
