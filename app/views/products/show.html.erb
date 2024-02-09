@@ -1,6 +1,5 @@
 <% if @positive_review_count > 0 %>
 <h1 class="text-red tac nm">The Reviews Are In</h1>
-<a href="/reviews/new"><p class="subscript tac" style="text-decoration: underline;">Write a Review</p></a>
 <section class="new-review slick-wrapper">
   <% @reviews.each do | review | %> 
     <div class=" background-pink review-wrapper-new">
@@ -24,13 +23,7 @@
     </div>
   <% end %>
   </section>
-<% else %>
-  <section class="new-review-hero">
-    <a href="/reviews/new">
-    <%= image_tag("new-review-hero.jpg", class: "fw do") %>
-    <%= image_tag("new-review-hero-mobile.jpg", class: "fw mo") %>
-</a>
-  </section>
+
 <% end %>
   <script>
 
